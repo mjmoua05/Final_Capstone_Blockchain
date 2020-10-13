@@ -30,7 +30,7 @@ contract SolnSquareVerifier is CustomERC721Token {
   event SolutionAdded(address to, uint256 index);
 
   // TODO Create a function to add the solutions to the array and emit the event
-  function addSolution(uint[2] memory a, uint[2][2] memory b, uint[2] memory c, uint[2] memory input) internal {
+  function addSolution(uint[2] memory a, uint[2][2] memory b, uint[2] memory c, uint[2] memory input) public {
         bytes32 key = keccak256(abi.encodePacked(a, b, c, input));
         require(uniqueSolutions[key].index == 0, "Solution already exsits");
         uniqueSolutions[key] = Solution({index: solCount, to: msg.sender});
@@ -40,7 +40,7 @@ contract SolnSquareVerifier is CustomERC721Token {
 
   // TODO Create a function to mint new NFT only after the solution has been verified
   //  - make sure the solution is unique (has not been used before)
-  //  - make sure you handle metadata as well as tokenSuplly
+  //  - make sure you handle metadata as well as tokenSupply
   function mintToken(address _to, uint256 _index, uint[2] memory a, uint[2][2] memory b, uint[2] memory c, uint[2] memory input) public {
     bytes32 key = keccak256(abi.encodePacked(a, b, c, input));
     require(uniqueSolutions[key].to == address(0), "Solution already exists!");

@@ -1,14 +1,3 @@
 def main(private field a, field b) -> (field):
   field result= if a * a == b then 1 else 0 fi
   return result
-
-
-
-function addSolution(uint[2] memory a, uint[2][2] memory b, uint[2] memory c, uint[2] memory input) public  {
-    bytes32 key = keccak256(abi.encodePacked(a, b, c, input));
-    require(SolutionsArray[key].index == 0, "Solution already exsits");
-    bool verified = verifierContract.verifyTx(a,b,c, input);
-    require(verified, "Solution could not be verified");
-    uniqueSolutions[key] = Solution(SolutionsArray, msg.sender, true, false);
-    emit SolutionAdded(msg.sender, key);
-  }
