@@ -32,8 +32,8 @@ contract SolnSquareVerifier is CustomERC721Token {
   event SolutionAdded(address to, uint256 index, bytes32 hash);
 
   // TODO Create a function to add the solutions to the array and emit the event
-  function addSolution(uint[2] memory a, uint[2][2] memory b, uint[2] memory c,
-  uint[2] memory input) public {
+  function addSolution(uint[2] a, uint[2][2] b, uint[2] c,
+  uint[2] input) public {
         bytes32 hash = keccak256(abi.encodePacked(a, b, c, input));
         require(uniqueSolutions[hash].index == 0, "Solution already exsits");
         uniqueSolutions[hash] = Solution({index: solCount, to: msg.sender, hash:hash});
@@ -45,8 +45,8 @@ contract SolnSquareVerifier is CustomERC721Token {
   //  - make sure the solution is unique (has not been used before)
   //  - make sure you handle metadata as well as tokenSupply
   function mintToken(address _to, uint256 _index,
-  uint[2] memory a, uint[2][2] memory b, uint[2] memory c,
-  uint[2] memory input) public {
+  uint[2] a, uint[2][2] b, uint[2] c,
+  uint[2] input) public {
     bytes32 hash = keccak256(abi.encodePacked(a, b, c, input));
     require(uniqueSolutions[hash].to == address(0), "Solution already exists!");
     addSolution(a, b, c, input);
