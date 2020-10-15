@@ -51,8 +51,8 @@ contract SolnSquareVerifier is CustomERC721Token {
     bytes32 hash = keccak256(abi.encodePacked(a, b, c, input));
     require(uniqueSolutions[hash].to == address(0), "Solution already exists!");
     addSolution(a, b, c, input);
-    mint(_to, _index);
     emit SolutionAdded(msg.sender, solCount, hash);
+    mint(_to, _index);
        
   }
   
