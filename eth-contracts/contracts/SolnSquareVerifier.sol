@@ -19,7 +19,7 @@ contract SolnSquareVerifier is CustomERC721Token {
   struct Solution {
     uint256 index;
     address to;
-    bytes32 hashKey;
+    bytes32 hash;
   }
 
   // TODO define an array of the above struct
@@ -29,13 +29,13 @@ contract SolnSquareVerifier is CustomERC721Token {
   mapping(bytes32 => Solution) public uniqueSolutions;
 
   // TODO Create an event to emit when a solution is added
-  event SolutionAdded(address to, uint256 index, bytes32 hashKey);
+  event SolutionAdded(address to, uint256 index, bytes32 hash);
 
   // TODO Create a function to add the solutions to the array and emit the event
   function addSolution(uint[2] memory a, uint[2][2] memory b, uint[2] memory c, uint[2] memory input) public {
         bytes32 hash = keccak256(abi.encodePacked(a, b, c, input));
         require(uniqueSolutions[hash].index == 0, "Solution already exsits");
-        uniqueSolutions[hash] = Solution({index: solCount, to: msg.sender, hashKey:hash});
+        uniqueSolutions[hash] = Solution({index: solCount, to: msg.sender, hash:hash});
         solCount+=1;
         emit SolutionAdded(msg.sender, solCount, hash);
     }
