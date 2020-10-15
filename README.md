@@ -13,9 +13,24 @@ The capstone will build upon the knowledge you have gained in the course in orde
 * [Docker](https://docs.docker.com/install/)
 * [ZoKrates](https://github.com/Zokrates/ZoKrates)
 
-Download files and sources. Test/Run
+Steps to run and test code:
+Download files and sources.
 
-Contract Address: 0xBe2D3484E40c9B38790967DCE5f995f51Ff016B4
+Get/install modules:
+>npm install 
+
+Compile contracts:
+>truffle compile
+
+Test files/configurations:
+>truffle test
+
+Upload to Rinkeby network:
+>truffle migrate --reset --network rinkeby
+
+
+SolnSquareVerifier Contract Address: 0xBe2D3484E40c9B38790967DCE5f995f51Ff016B4
+Verifier Contract Address: 0x2cE6997101F0445B326Cf908C2150F2E603e48A2
 ABI: Found in file titled './ABI'
 OpenSea link: https://rinkeby.opensea.io/storefront/mjtoken-v2
 

@@ -55,5 +55,4 @@ contract SolnSquareVerifier is CustomERC721Token {
        
   }
   
-
 }
