@@ -37,7 +37,7 @@ contract SolnSquareVerifier is CustomERC721Token {
         require(uniqueSolutions[hash].index == 0, "Solution already exsits");
         uniqueSolutions[hash] = Solution({index: solCount, to: msg.sender, hashKey:key});
         solCount+=1;
-        emit SolutionAdded(msg.sender, solCount);
+        emit SolutionAdded(msg.sender, solCount, hash);
     }
 
   // TODO Create a function to mint new NFT only after the solution has been verified
@@ -47,7 +47,7 @@ contract SolnSquareVerifier is CustomERC721Token {
     bytes32 hash = keccak256(abi.encodePacked(a, b, c, input));
     require(uniqueSolutions[hash].to == address(0), "Solution already exists!");
     addSolution(a, b, c, input);
-    emit SolutionAdded(msg.sender, solCount);
+    emit SolutionAdded(msg.sender, solCount, hash);
     mint(_to, _index);
   }
   
