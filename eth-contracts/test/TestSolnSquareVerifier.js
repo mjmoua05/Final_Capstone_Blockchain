@@ -2,8 +2,6 @@
 // Test if an ERC721 token can be minted for contract - SolnSquareVerifier
 let Verifier = artifacts.require('Verifier');
 let SolnSquareVerifier = artifacts.require('SolnSquareVerifier');
-var SHA256 = require("crypto-js/sha256");
-
 let realProof = require('./proof'); //proof file has been copied over to this test folder location
 
 contract('TestSolnSquareVerifier', accounts => {
@@ -33,7 +31,7 @@ contract('TestSolnSquareVerifier', accounts => {
     it('can mint new ERC721 token', async function () {
       let mint = true;
       try{
-        await this.contract.mintToken(account_two, 2, realProof.proof.a, realProof.proof.b, realProof.proof.c [2,4], {from:account_one});
+        await this.contract.mintToken(account_two, 2, realProof.proof.a, realProof.proof.b, realProof.proof.c [5,4], {from:account_one});
       }catch {
         mint = false;
       }
