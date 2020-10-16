@@ -10,7 +10,6 @@ contract SquareVerifier is Verifier {
 contract SolnSquareVerifier is CustomERC721Token {
   SquareVerifier public verifierContract;
   constructor(address verifierAddress) CustomERC721Token() public{
-    
     verifierContract = SquareVerifier(verifierAddress);
   }
 
