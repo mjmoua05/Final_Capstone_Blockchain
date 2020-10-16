@@ -13,7 +13,7 @@ contract('TestSolnVerifier', accounts => {
   describe('Test if a new solution can be added for contract - SolnSquareVerifier', function () {
     beforeEach(async function () {
         const sqVerifier = await Verifier.new({from: account_one});
-        this.contract = await SolnSquareVerifier.new();
+        this.contract = await SolnSquareVerifier.new(sqVerifier);
     })
 
     it('can add new solution', async function () {
@@ -26,7 +26,7 @@ contract('TestSolnVerifier', accounts => {
   describe('Test if an ERC721 token can be minted for contract - SolnSquareVerifier', function () {
     beforeEach(async function () {
       const sqVerifier = await Verifier.new({from: account_one});
-        this.contract = await SolnSquareVerifier.new();
+        this.contract = await SolnSquareVerifier.new(sqVerifier);
     })
 
     it('can mint new ERC721 token', async function () {
